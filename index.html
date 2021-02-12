@@ -8,20 +8,30 @@
     <title>E-Scape</title>
 </head>
 <body>
+    <div id="main">
     <div class="header">
         <h1>E-Scape</h1>
         <div id="button-container">
             <button syle="float: right;" id="aboutBtn">About</button>
-            <button id="cartBtn">Cart</button>
+            <button  id="cartBtn">Cart</button>
         </div>
     </div>
     
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <ul>
+
+        </ul> 
+        <form>
+
+        </form>   
+      </div>
     
 
    <section id="items">
     <div class="column">
         <div class="card">
-            <img src="https://i.gadgets360cdn.com/large/ps5_digital_edition_1591912834512.jpeg" alt="Playstation 5" style="width:100%">
+            <div class= "image-container"><img src="https://i.gadgets360cdn.com/large/ps5_digital_edition_1591912834512.jpeg" alt="Playstation 5" style="width:100%"></div>
             <h1><br>Playstation 5<br></h1>
             <p class="price">$499.99</p>
             <p>The most buggy console out there. Wait for the next one!</p>
@@ -32,7 +42,7 @@
 
     <div class="column">
         <div class="card" id="oculus">
-            <img src="https://c1.neweggimages.com/ProductImage/26-910-013-V04.jpg" alt="Oculus Quest" style="width:100%">
+            <div class= "image-container"><img src="https://c1.neweggimages.com/ProductImage/26-910-013-V04.jpg" alt="Oculus Quest" style="width:100%"></div>
             <h1>Oculus Quest 128GB VR Headset</h1>
             <p class="price">$657.99</p>
             <p>Escape reality! Your experiences are endless!</p>
@@ -42,7 +52,7 @@
 
         <div class="column">
             <div class="card" id="crossword">
-                <img src="https://i5.walmartimages.com/asr/3e935db1-dc1b-4cde-a4e9-a07498111493_1.f4122d0a8e8d0db82087244ee68df27c.jpeg" alt="Merv Griffin Crosswords" style="width:100%">
+                <div class= "image-container"><img src="https://i5.walmartimages.com/asr/3e935db1-dc1b-4cde-a4e9-a07498111493_1.f4122d0a8e8d0db82087244ee68df27c.jpeg" alt="Merv Griffin Crosswords" style="width:100%"></div>
                 <h1>Merv Griffin Crosswords</h1>
                 <p class="price">$14.99</p>
                 <p>Fill in the blanks with this fun game for old people!</p>
@@ -52,7 +62,7 @@
       
         <div class="column">
             <div class="card" id="switch">
-                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%">
+                <div class= "image-container"><img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%"></div>
                 <h1>Nintendo Switch Animal Crossing Edition</h1>
                 <p class="price">$299.99</p>
                 <p>Play animal crossing with your friends!</p>
@@ -62,7 +72,7 @@
       
         <div class="column">
             <div class="card" id="lionking">
-                <img src="https://target.scene7.com/is/image/Target/GUEST_2ac1eb31-d7cf-467b-ae90-f7ce62843a32?wid=488&hei=488&fmt=pjpeg" alt="Nintendo Switch" style="width:100%">
+                <div class= "image-container"><img src="https://target.scene7.com/is/image/Target/GUEST_2ac1eb31-d7cf-467b-ae90-f7ce62843a32?wid=488&hei=488&fmt=pjpeg" alt="Nintendo Switch" style="width:100%"></div>
                 <h1>Disney Classic Games: Aladdin and The Lion King</h1>
                 <p class="price">$27.99</p>
                 <p>Experience the circle of life with this classic game!</p>
@@ -72,7 +82,9 @@
       
 
    </section>
-    
-    <script>src="./src/script.js"</script>
+</div>
+   
+<script src="src/script.js"></script>
+
 </body>
 </html>
