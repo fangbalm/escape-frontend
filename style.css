@@ -1,0 +1,26 @@
+div.header{
+    background-color: black;
+    /* display: flex; */
+    position: relative; 
+    display: flex; 
+    padding: 0;
+    margin: none; 
+    
+}
+
+div.header h1{
+    color: white; 
+    display: inline;
+}
+
+ div.header #button-container{
+    position: absolute; 
+    right: 5px; 
+    margin-top: 4%;
+}
+
+div.header button{
+    background-color: black; 
+    color: white; 
+    border: none; 
+}
