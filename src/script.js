@@ -26,3 +26,15 @@ function openNav(e) {
     document.getElementById("main").style.marginRight = "0";
   }
   
+
+  /**** TEST FUNCTION FOR RANDOMIZED COLOR ON BUTTON CLICK */
+
+  // https://stackoverflow.com/questions/29356866/change-color-of-the-text-on-click-to-random-color-button
+
+  function randomize() {
+    document.getElementById('aboutBtn').style.color = randomColors();
+  }
+
+  function randomColors() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  }
