@@ -12,7 +12,19 @@
     <div class="header">
         <h1>E-Scape</h1>
         <div id="button-container">
-            <button onclick="randomize()" syle="float: right;" id="aboutBtn">About</button> 
+            <button class="popup" id="aboutBtn">About
+                <span class="popuptext" id="aboutPopUp">
+                    A Simple Popup!
+                    <form id="aboutForm">
+                        <input id="name" type="text" placeholder="Enter name...">
+                        <input type="submit" value="Get Started">
+                        <!-- <button id="closeBtn">Close</button> -->
+                    </form>
+
+
+            </span>
+        </button> 
+            
             <button  id="cartBtn">Cart</button>
         </div>
     </div>
