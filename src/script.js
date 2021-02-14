@@ -7,8 +7,11 @@ const cartBtn = document.querySelector('#cartBtn')
 // console.log(cartBtn)
 const aboutForm = document.querySelector('#aboutForm')
 const popup = document.getElementById("aboutPopUp");
+const btnContainer = document.querySelector('#button-container')
+const welcomeSpan = document.querySelector(".welcome")
 
 const userUrl = "http://localhost:3000/users"
+const clueUrl = "http://localhost:3000/clues"
 
 
 // ************** FETCH FUNCTIONS *****************
@@ -21,9 +24,20 @@ function createUser(nameInput){
     body: JSON.stringify({name: nameInput})
   })
     .then(response => response.json())
-    .then(console.log)
-  
+    .then(welcomeUser)
   }
+
+//   function clues(clueId){
+//     fetch(`${clueUrl}/${clueId}`)
+//     .then(response => response.json())
+//     .then(console.log)
+//   }
+  
+  function getAllClues(){
+    fetch(clueUrl)
+    .then(response => response.json())
+    .then(displayAllClues)
+}
 
 //**********Event Listeners **********//
 
@@ -35,9 +49,79 @@ aboutForm.addEventListener('submit', handleUserSubmit)
 
 
 //*********Logic *******//
-// function welcomeUser(e){
+function welcomeUser(user){
+    const userName = user.name
+    const userSpan = document.createElement('span')
+    userSpan.dataset.id = user.id
+    userSpan.setAttribute("class", "welcome")
+    userSpan.innerText = `Welcome ${userName}`
+    btnContainer.prepend(userSpan)
+    // fillClue()
+    getAllClues()
+}
 
-// }
+function displayAllClues(clues){
+    clues.forEach(clue =>{
+        if (clue.id == 1){
+            fillClue(clue)
+        }
+        else if (clue.id == 2){
+            yourClue(clue)
+        }
+        else if (clue.id == 2){
+            lifeClue(clue)
+        }
+        else if (clue.id == 2){
+            withClue(clue)
+        }
+        else if (clue.id == 2){
+            experiencesClue(clue)
+        }
+        else if (clue.id == 2){
+            notClue(clue)
+        }
+        else if (clue.id == 2){
+            thingsClue(clue)
+        }
+    })
+}
+
+
+function fillClue(clue){
+    let p = new Peel('#constraint');
+    p.addPeelConstraint(Peel.Corners.BOTTOM_LEFT);
+    p.handleDrag(function(evt, x, y) {
+    this.setPeelPosition(x, y);
+});
+    
+}
+
+function yourClue(){
+
+}
+
+function lifeClue(){
+
+}
+
+function withClue(){
+
+}
+
+function experiencesClue(clue){
+
+}
+
+function notClue(clue){
+
+}
+
+function thingsClue(clue){
+
+}
+
+
+
 
 function handleUserSubmit(e){
   e.preventDefault()
@@ -49,7 +133,7 @@ function handleUserSubmit(e){
 }
 
 function handleAboutBtn(e){
-  console.log(e)
+//   console.log(e)
   popup.classList.add("show");
 }
 
@@ -66,13 +150,13 @@ function openNav(e) {
     document.getElementById("main").style.marginRight = "0";
   }
   
-  function getUser(){
-    fetch("http://localhost:3000/users")
-    .then(response => response.json())
-    .then(console.log)
-  }
-  // Invoking Function
-  getUser()
+//   function getUser(){
+//     fetch("http://localhost:3000/users")
+//     .then(response => response.json())
+//     .then(console.log)
+//   }
+//   // Invoking Function
+//   getUser()
 
   
 
