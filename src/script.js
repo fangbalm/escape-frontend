@@ -9,6 +9,7 @@ const aboutForm = document.querySelector('#aboutForm')
 const popup = document.getElementById("aboutPopUp");
 const btnContainer = document.querySelector('#button-container')
 const welcomeSpan = document.querySelector(".welcome")
+const p = document.querySelector('.clue-five')
 
 const userUrl = "http://localhost:3000/users"
 const clueUrl = "http://localhost:3000/clues"
@@ -68,19 +69,19 @@ function displayAllClues(clues){
         else if (clue.id == 2){
             yourClue(clue)
         }
-        else if (clue.id == 2){
+        else if (clue.id == 3){
             lifeClue(clue)
         }
-        else if (clue.id == 2){
+        else if (clue.id == 4){
             withClue(clue)
         }
-        else if (clue.id == 2){
+        else if (clue.id == 5){
             experiencesClue(clue)
         }
-        else if (clue.id == 2){
+        else if (clue.id == 6){
             notClue(clue)
         }
-        else if (clue.id == 2){
+        else if (clue.id == 7){
             thingsClue(clue)
         }
     })
@@ -88,11 +89,11 @@ function displayAllClues(clues){
 
 
 function fillClue(clue){
-    let p = new Peel('#constraint');
-    p.addPeelConstraint(Peel.Corners.BOTTOM_LEFT);
-    p.handleDrag(function(evt, x, y) {
-    this.setPeelPosition(x, y);
-});
+//     let p = new Peel('#constraint');
+//     p.addPeelConstraint(Peel.Corners.BOTTOM_LEFT);
+//     p.handleDrag(function(evt, x, y) {
+//     this.setPeelPosition(x, y);
+// });
     
 }
 
@@ -109,6 +110,13 @@ function withClue(){
 }
 
 function experiencesClue(clue){
+//     console.log(clue)
+//     pText = p.innerText
+//     const pAry = pText.split(" ")
+//     const experiencesString = pAry[3]
+//    console.log(experiencesString)
+//    experiencesString.setAttribute("class", "gradient-text")
+
 
 }
 
