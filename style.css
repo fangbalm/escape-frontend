@@ -239,7 +239,7 @@ div.header .welcome{
   /* text-transform:uppercase; */
   /* font-weight:900; */
 }
-.gradient-text:hover{
+.gradient-text:hover, #experiences{
   color:rgba(0,0,0,0);
   
 }

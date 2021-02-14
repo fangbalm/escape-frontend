@@ -8,11 +8,12 @@ const cartBtn = document.querySelector('#cartBtn')
 const aboutForm = document.querySelector('#aboutForm')
 const popup = document.getElementById("aboutPopUp");
 const btnContainer = document.querySelector('#button-container')
-const welcomeSpan = document.querySelector(".welcome")
-const p = document.querySelector('.clue-five')
+let welcomeSpan = document.querySelector(".welcome")
+const experienceSpan = document.querySelector('.gradient-text')
 
 const userUrl = "http://localhost:3000/users"
 const clueUrl = "http://localhost:3000/clues"
+const cartUrl = "http://localhost:3000/carts"
 
 
 // ************** FETCH FUNCTIONS *****************
@@ -40,16 +41,32 @@ function createUser(nameInput){
     .then(displayAllClues)
 }
 
+function postCart(clueId, userId){
+  fetch(cartUrl, {
+    method: "POST", 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({user_id: userId, clue_id: clueId})
+  }).then(response => response.json())
+    .then(console.log)
+  }
+
+
 //**********Event Listeners **********//
 
 cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
+experienceSpan.addEventListener('click', experiencesClue)
 
 
 
 
 //*********Logic *******//
+let userId; 
+
+
 function welcomeUser(user){
     const userName = user.name
     const userSpan = document.createElement('span')
@@ -57,6 +74,8 @@ function welcomeUser(user){
     userSpan.setAttribute("class", "welcome")
     userSpan.innerText = `Welcome ${userName}`
     btnContainer.prepend(userSpan)
+    console.log(userSpan)
+    userId = user.id
     // fillClue()
     getAllClues()
 }
@@ -76,7 +95,10 @@ function displayAllClues(clues){
             withClue(clue)
         }
         else if (clue.id == 5){
-            experiencesClue(clue)
+          // console.log(clue.id)
+          experienceSpan.dataset.id = clue.id
+          // experiencesClue(clue)
+            
         }
         else if (clue.id == 6){
             notClue(clue)
@@ -109,7 +131,15 @@ function withClue(){
 
 }
 
-function experiencesClue(clue){
+function experiencesClue(e){
+  // console.log(e.target)
+  const clueId = parseInt(e.target.dataset.id)
+  // console.log(welcomeSpan)
+  // const userId = welcomeSpan.dataset.id
+  postCart(clueId, userId)
+  // console.log(e.target.dataset.id)
+
+  
 //     console.log(clue)
 //     pText = p.innerText
 //     const pAry = pText.split(" ")
@@ -146,7 +176,6 @@ function handleAboutBtn(e){
 }
 
 
-
 function openNav(e) {
     
     document.getElementById("mySidenav").style.width = "250px";
@@ -158,6 +187,25 @@ function openNav(e) {
     document.getElementById("main").style.marginRight = "0";
   }
   
+
+  // function handleExperience(e){
+  //   console.log(e)
+    
+  // }
+
+  // POST REQUEST  
+  // arguments (user.id, clue.id)
+
+
+
+
+
+
+
+
+
+
+
 //   function getUser(){
 //     fetch("http://localhost:3000/users")
 //     .then(response => response.json())
