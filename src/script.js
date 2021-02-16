@@ -10,6 +10,7 @@ const popup = document.getElementById("aboutPopUp");
 const btnContainer = document.querySelector('#button-container')
 let welcomeSpan = document.querySelector(".welcome")
 const experienceSpan = document.querySelector('.gradient-text')
+const clueList = document.querySelector('#clue-list')
 
 const userUrl = "http://localhost:3000/users"
 const clueUrl = "http://localhost:3000/clues"
@@ -48,9 +49,23 @@ function postCart(clueId, userId){
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({user_id: userId, clue_id: clueId})
-  }).then(response => response.json())
-    .then(console.log)
+  })
+  // .then(response => response.json())
+    // .then(console.log)
   }
+
+  function getUserCart(userId){
+    fetch(`${userUrl}/${userId}`)
+    .then(res => res.json())
+    .then(parseClues)
+  }
+
+
+  // Make fetch(localhost:300/users/id)
+  // .then(res => res.json())
+   // .then(parseClues)
+
+   // 3 Functions (fetch, handle, read)
 
 
 //**********Event Listeners **********//
@@ -74,7 +89,7 @@ function welcomeUser(user){
     userSpan.setAttribute("class", "welcome")
     userSpan.innerText = `Welcome ${userName}`
     btnContainer.prepend(userSpan)
-    console.log(userSpan)
+    // console.log(userSpan)
     userId = user.id
     // fillClue()
     getAllClues()
@@ -109,6 +124,23 @@ function displayAllClues(clues){
     })
 }
 
+function parseClues(userData){
+  const clueArray = userData.user_clues
+  // console.log(clueArray)
+  clueArray.forEach(clue => {
+    addToCart(clue)
+  })
+}
+
+function addToCart(clue){
+  const clueLi = document.createElement('li')
+  const clueImgTag = document.createElement('img')
+  const cluePTag = document.createElement('p')
+  cluePTag.innerText = `${clue.id}. ${clue.word}`
+  clueImgTag.src = clue.image
+  clueLi.append(cluePTag, clueImgTag)
+  clueList.append(clueLi)
+}
 
 function fillClue(clue){
 //     let p = new Peel('#constraint');
@@ -146,7 +178,7 @@ function experiencesClue(e){
 //     const experiencesString = pAry[3]
 //    console.log(experiencesString)
 //    experiencesString.setAttribute("class", "gradient-text")
-
+  getUserCart(userId)
 
 }
 

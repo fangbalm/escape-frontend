@@ -148,6 +148,16 @@ div.header .welcome{
   margin-left: 50px;
 }
 
+ ul#clue-list li img{
+  width: 65px;
+  float: right; 
+}
+
+ul#clue-list li p{
+  color: white; 
+  display: inline;
+}
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-right .5s;
