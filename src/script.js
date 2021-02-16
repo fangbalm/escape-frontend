@@ -12,6 +12,8 @@ let welcomeSpan = document.querySelector(".welcome")
 const experienceSpan = document.querySelector('.gradient-text')
 const clueList = document.querySelector('#clue-list')
 const ps5Button = document.querySelector('#ps5-button')
+const lionDiv = document.querySelector('#lionking')
+const lionImg = document.querySelector('.fake-life-img')
 // let notButton = document.querySelector('.notButton')
 
 const userUrl = "http://localhost:3000/users"
@@ -78,6 +80,7 @@ aboutForm.addEventListener('submit', handleUserSubmit)
 experienceSpan.addEventListener('click', experiencesClue)
 // notButton.addEventListener('click', notClue)
 
+// lionImg.addEventListener("mouseout",lifeClueOut)
 
 
 
@@ -109,7 +112,13 @@ function displayAllClues(clues){
             yourClue(clue)
         }
         else if (clue.id == 3){
-            lifeClue(clue)
+            const lifeImg = document.createElement('img')
+            lifeImg.src = clue.image
+            lifeImg.setAttribute("class", "life-img")
+            lifeImg.dataset.id = clue.id
+            lionDiv.append(lifeImg)
+            lionImg.addEventListener("mousemove",lifeClue)
+            lifeClueClick()
         }
         else if (clue.id == 4){
             withClue(clue)
@@ -135,6 +144,9 @@ function cartUserId(cartObj){
   const userId = parseInt(cartObj.user.id)
   // console.log(userId)
   getUserCart(userId)
+  while (clueList.firstChild){
+    clueList.lastChild.remove()
+}
 }
 
 function parseClues(userData){
@@ -146,6 +158,7 @@ function parseClues(userData){
 }
 
 function addToCart(clue){
+   
   const clueLi = document.createElement('li')
   const clueImgTag = document.createElement('img')
   const cluePTag = document.createElement('p')
@@ -168,8 +181,26 @@ function yourClue(){
 
 }
 
-function lifeClue(){
+function lifeClue(e){
+    const hiddenlion = e.target
+    console.log(hiddenlion)
+    hiddenlion.id= "hidden-lion"
+    // e.target.remove()
 
+}
+function lifeClueOut(e){
+    const hiddenlion = e.target
+    console.log(hiddenlion)
+    hiddenlion.id= ""
+}
+
+function lifeClueClick(){
+    const lifeImgClick = document.querySelector(".life-img")
+    console.log(lifeImgClick)
+    lifeImgClick.addEventListener('click', function(e) {
+        const clueId = e.target.dataset.id
+        postCart(clueId, userId)
+    })
 }
 
 function withClue(){

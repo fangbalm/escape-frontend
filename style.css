@@ -81,6 +81,41 @@ div.header .welcome{
     object-fit: cover;
   }
 
+  div#lionking{
+    height: 19rem; 
+    width: auto; 
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+    
+  }
+
+  .fake-life-img{
+    position: relative;
+    z-index: 1;
+}
+
+ #hidden-lion{
+  position: relative;
+  z-index: -1;
+}
+
+
+/* .hidden-lion:hover{
+  visibility: hidden;
+} */
+
+.life-img{
+      position: absolute;
+      display: block;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      /* pointer-events: none;
+      border-radius: 50%; */
+  }
+
   #items{
       display: flex; 
       flex-wrap: wrap; 
