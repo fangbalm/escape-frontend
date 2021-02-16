@@ -14,6 +14,10 @@ const clueList = document.querySelector('#clue-list')
 const ps5Button = document.querySelector('#ps5-button')
 const lionDiv = document.querySelector('#lionking')
 const lionImg = document.querySelector('.fake-life-img')
+const crosswordDiv = document.querySelector('#crossword')
+const crosswordBtn = document.querySelector('#crossword-btn')
+const fillDiv =document.querySelector('#fill')
+const formDiv = document.querySelector('#form')
 // let notButton = document.querySelector('.notButton')
 
 const userUrl = "http://localhost:3000/users"
@@ -106,6 +110,14 @@ function welcomeUser(user){
 function displayAllClues(clues){
     clues.forEach(clue =>{
         if (clue.id == 1){
+            // const fillImg = document.createElement('img')
+            // fillImg.src = clue.image
+            // fillImg.setAttribute("class", "fill-img")
+            // crosswordDiv.append(fillImg)
+
+            crosswordBtn.setAttribute("class","fillButton")
+            crosswordBtn.dataset.id = clue.id
+            
             fillClue(clue)
         }
         else if (clue.id == 2){
@@ -169,6 +181,12 @@ function addToCart(clue){
 }
 
 function fillClue(clue){
+    const fillImg = document.createElement('img')
+    fillImg.src = clue.image
+    fillImg.setAttribute("class", "fill-img")
+    fillDiv.append(fillImg)
+    let fillButton = document.querySelector('.fillButton')
+    fillButton.addEventListener('click', handleFillClue)
 //     let p = new Peel('#constraint');
 //     p.addPeelConstraint(Peel.Corners.BOTTOM_LEFT);
 //     p.handleDrag(function(evt, x, y) {
@@ -177,13 +195,36 @@ function fillClue(clue){
     
 }
 
+function handleFillClue(e){
+    alert("_______ in the Blank")
+    const mervImg = document.querySelector('.merv')
+    mervImg.id = "hidden-merv"
+    const clueForm = document.createElement('form')
+    clueForm.dataset.id = parseInt(e.target.dataset.id)
+    const fillInput = document.createElement('input')
+    fillInput.type = "text"
+    fillInput.value = ""
+    const inTheBlank = document.createElement('label')
+    inTheBlank.innertext = " in the Blank"
+    const fillsubmit = document.createElement('input')
+    fillsubmit.setAttribute("type", "submit")
+
+
+    clueForm.append(fillInput,inTheBlank,fillsubmit)
+    formDiv.append(clueForm)
+    
+    fillButton.disable = true
+
+    console.log(e)
+}
+
 function yourClue(){
 
 }
 
 function lifeClue(e){
     const hiddenlion = e.target
-    console.log(hiddenlion)
+    
     hiddenlion.id= "hidden-lion"
     // e.target.remove()
 
