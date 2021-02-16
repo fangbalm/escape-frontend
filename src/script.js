@@ -11,6 +11,8 @@ const btnContainer = document.querySelector('#button-container')
 let welcomeSpan = document.querySelector(".welcome")
 const experienceSpan = document.querySelector('.gradient-text')
 const clueList = document.querySelector('#clue-list')
+const ps5Button = document.querySelector('#ps5-button')
+// let notButton = document.querySelector('.notButton')
 
 const userUrl = "http://localhost:3000/users"
 const clueUrl = "http://localhost:3000/clues"
@@ -50,8 +52,8 @@ function postCart(clueId, userId){
     },
     body: JSON.stringify({user_id: userId, clue_id: clueId})
   })
-  // .then(response => response.json())
-    // .then(console.log)
+  .then(response => response.json())
+    .then(cartUserId)
   }
 
   function getUserCart(userId){
@@ -74,6 +76,7 @@ cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
 experienceSpan.addEventListener('click', experiencesClue)
+// notButton.addEventListener('click', notClue)
 
 
 
@@ -81,6 +84,8 @@ experienceSpan.addEventListener('click', experiencesClue)
 //*********Logic *******//
 let userId; 
 
+
+  
 
 function welcomeUser(user){
     const userName = user.name
@@ -116,12 +121,20 @@ function displayAllClues(clues){
             
         }
         else if (clue.id == 6){
+            ps5Button.setAttribute("class","notButton")
+            ps5Button.dataset.id = clue.id
             notClue(clue)
         }
         else if (clue.id == 7){
             thingsClue(clue)
         }
     })
+}
+
+function cartUserId(cartObj){
+  const userId = parseInt(cartObj.user.id)
+  // console.log(userId)
+  getUserCart(userId)
 }
 
 function parseClues(userData){
@@ -178,12 +191,31 @@ function experiencesClue(e){
 //     const experiencesString = pAry[3]
 //    console.log(experiencesString)
 //    experiencesString.setAttribute("class", "gradient-text")
-  getUserCart(userId)
+  // getUserCart(userId)
 
 }
 
 function notClue(clue){
+  let notButton = document.querySelector('.notButton')
+  notButton.addEventListener('click', handleNotClue)
+  // console.log(e) 
 
+}
+
+function handleNotClue(e){
+  console.log(e)
+  const ps5Desc = document.querySelector('#ps5-desc')
+  ps5Desc.innerHTML = `Do <u><strong><span id="notSpan">NOT</span></strong></u> buy this!!!`
+  const notSpan = document.querySelector('#notSpan')
+  notSpan.dataset.id = parseInt(e.target.dataset.id)
+  notSpan.addEventListener('click', handleNotSpan)
+  
+}
+
+function handleNotSpan(e){ 
+  console.log(e)
+  const clueId = e.target.dataset.id
+  postCart(clueId, userId) 
 }
 
 function thingsClue(clue){

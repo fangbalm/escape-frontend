@@ -148,6 +148,11 @@ div.header .welcome{
   margin-left: 50px;
 }
 
+ul#clue-list li{
+  border-bottom: solid .3px rgb(123, 123, 123);
+  padding: 20px; 
+}
+
  ul#clue-list li img{
   width: 65px;
   float: right; 
