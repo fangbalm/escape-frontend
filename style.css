@@ -340,4 +340,31 @@ ul#clue-list li p{
   100%{background-position:left}
 }
 
+.container {
+  /* border: 3px solid black; */
+  position: relative;
+  /* width: 300px;
+  height: 300px; 
+  margin: 0 auto; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; 
+  -o-user-select: none;
+  user-select: none;
+}
 
+
+.canvas {
+  position: absolute;
+  top: 0;
+  max-width: 100%; 
+}
+
+.your-img {
+  padding: 0px;
+  max-width: 100%;
+}
+
+.hidden-canvas{
+  visibility: hidden; 
+}
