@@ -357,7 +357,7 @@ ul#clue-list li p{
 .canvas {
   position: absolute;
   top: 0;
-  max-width: 100%; 
+  /* max-width: 100%;  */
 }
 
 .your-img {
@@ -368,3 +368,12 @@ ul#clue-list li p{
 .hidden-canvas{
   visibility: hidden; 
 }
+
+/* #div1{
+  height: 100%;
+
+}
+
+#with{
+  height: auto;
+} */

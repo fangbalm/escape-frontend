@@ -18,6 +18,8 @@ const crosswordDiv = document.querySelector('#crossword')
 const crosswordBtn = document.querySelector('#crossword-btn')
 const fillDiv =document.querySelector('#fill')
 const formDiv = document.querySelector('#form')
+const withDiv = document.querySelector('#with')
+
 // let notButton = document.querySelector('.notButton')
 
 const userUrl = "http://localhost:3000/users"
@@ -82,6 +84,8 @@ cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
 experienceSpan.addEventListener('click', experiencesClue)
+
+
 // notButton.addEventListener('click', notClue)
 
 // lionImg.addEventListener("mouseout",lifeClueOut)
@@ -127,20 +131,22 @@ function displayAllClues(clues){
             switchImg.remove()
             switchDiv.id += " js-container"
             switchDiv.className += " container"
-            // const canvas = document.createElement('canvas')
-            // canvas.className = "canvas"
-            // canvas.id = "js-canvas"
-            // canvas.src = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg"
             const canvasDiv = document.querySelector('.canvas')
             canvasDiv.id = ""
             canvasDiv.id = "js-canvas"
+            const yourSpan = document.querySelector('#your-clue') 
+            yourSpan.dataset.id = clue.id
             const yourImg = document.createElement('img')
             yourImg.src = clue.image
             yourImg.setAttribute("class", "your-img")
-            yourImg.dataset.id = clue.id
             yourImg.style = "visibility: hidden"
-            switchDiv.append(yourImg)
+            const clueP = document.createElement('p')
+            clueP.innerText ="It belongs to you. click the correct word int the description"
+            switchDiv.append(yourImg, clueP)
             yourClue()
+            yourSpan.addEventListener('click', handleYourClick)
+            
+
         }
         else if (clue.id == 3){
             const lifeImg = document.createElement('img')
@@ -152,7 +158,22 @@ function displayAllClues(clues){
             lifeClueClick()
         }
         else if (clue.id == 4){
-            withClue(clue)
+            
+            const br = document.createElement('br')
+            const withImg = document.createElement('img')
+            withImg.src = "with.jpg"
+            withImg.id="drag1"
+            withImg.draggable ="true" 
+            
+            withDiv.append(br,withImg)
+            const danceImg = document.querySelector('.dancing')
+            danceImg.src = "Dancing-the-Stars.jpeg"
+            danceImg.dataset.id = clue.id
+            withImg.addEventListener('dragstart', drag);
+            // withDiv.addEventListener('dragover', allowDrop(ev));
+            // withDiv.addEventListener('drop', drop(ev));
+            
+            // withClue(clue)
         }
         else if (clue.id == 5){
           // console.log(clue.id)
@@ -241,7 +262,7 @@ function handleFillClue(e){
 
 function fillForm(){
   const clueForm = document.querySelector('#form')
-  console.log(clueForm)
+  
   clueForm.addEventListener("submit", handleFillSubmit)
 }
 
@@ -274,8 +295,9 @@ function yourClue(){
         brush        = new Image();
         
     // base64 Workaround because Same-Origin-Policy
-    image.src = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg"
+    image.src = "switch.jpg"
     
+
   image.onload = function() {
     ctx.drawImage(image, 0, 0);
     // Show the form when Image is loaded.
@@ -376,6 +398,14 @@ function yourClue(){
   };
 
 
+  function handleYourClick(e){
+    const clueId = e.target.dataset.id
+    postCart(clueId, userId)
+  }
+
+
+
+
 
 function lifeClue(e){
     const hiddenlion = e.target
@@ -438,7 +468,7 @@ function handleNotClue(e){
 }
 
 function handleNotSpan(e){ 
-  console.log(e)
+  
   const clueId = e.target.dataset.id
   postCart(clueId, userId) 
 }
@@ -476,6 +506,25 @@ function openNav(e) {
     document.getElementById("main").style.marginRight = "0";
   }
   
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    const clueId = parseInt(ev.target.dataset.id )
+    const danceImg = document.querySelector('.dancing')
+    danceImg.src = "https://images-na.ssl-images-amazon.com/images/I/51VXeLW4kxL._SY445_.jpg"
+
+    postCart(clueId, userId)
+  }
 
   // function handleExperience(e){
   //   console.log(e)
