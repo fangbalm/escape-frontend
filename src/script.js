@@ -106,6 +106,25 @@ function getReviews(){
     fetchAllReviews()
 }
 
+function updateReview(reviewId, reviewComment){
+    fetch(`http://localhost:3000/reviews/${reviewId}`, {
+        method: "PATCH", 
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({comment: reviewComment, review_id: reviewId})
+      })
+      .then(response => response.json())
+        .then(displayUpdatedReview)
+      }
+
+function deleteReview(reviewId){
+    fetch(`http://localhost:3000/reviews/${reviewId}`, {
+        method: "DELETE", 
+    })
+    .then(response => response.json())
+    .then(DeleteMessage)
+    }
   // Make fetch(localhost:300/users/id)
   // .then(res => res.json())
    // .then(parseClues)
@@ -278,7 +297,6 @@ function cartComplete(){
     let winnerInput = document.createElement('input')
       winnerInput.type = "text"
       winnerInput.value = ""
-
       let winnersubmit = document.createElement('input')
       winnersubmit.setAttribute("type", "submit")
       winnerForm.append(winnerInput, winnersubmit)
@@ -290,10 +308,8 @@ function cartComplete(){
 const modal = document.getElementById("myModal");
 function winnerFormEvent(e){
    e.preventDefault()
-   console.log(e)
    const answer = e.target[0].value.toLowerCase()
-   console.log(answer)
-   if (answer == "fill your life with exsperiances not things"){
+   if (answer == "fill your life with exsperiences not things"){
         modal.style.display = "block";
    }
    else {
@@ -334,7 +350,6 @@ function fillClue(clue){
 }
 
 function handleFillClue(e){
-  console.log(e)
     alert("_______ in the Blank")
     let mervImg = document.querySelector('.merv')
     mervImg.id = "hidden-merv"
@@ -344,6 +359,7 @@ function handleFillClue(e){
 
     if(formDiv.innerHTML == ""){
       const clueForm = document.createElement('form')
+      clueForm.className = "fill-form"
       clueForm.dataset.id = parseInt(e.target.dataset.id)
       let fillInput = document.createElement('input')
       fillInput.type = "text"
@@ -519,6 +535,7 @@ function lifeClueOut(e){
 
 function lifeClueClick(){
     const lifeImgClick = document.querySelector(".life-img")
+
     lifeImgClick.addEventListener('click', function(e) {
         const clueId = e.target.dataset.id
         postCart(clueId, userId)
@@ -637,25 +654,92 @@ function openNav(e) {
   }
 
   function handleReviewForm(e){
-      e.preventDefault()
-      const review = e.target[0].value
-      console.log(review)
-      postReview(review)
-       
+    e.preventDefault()
+    const review = e.target[0].value
+    postReview(review)
+    e.target.remove()
+  }
+  function displayUpdatedReview(review){
+    const reviewP = document.querySelector('#user-review')
+    reviewP.innerText = review.comment
+  }
+
+  function DeleteMessage(){
+    const updateForm = document.querySelector('#update-review')
+    updateForm.remove()
+    const reviewP = document.querySelector('#user-review')
+    reviewP.innerText = "Your Review has been Deleted. Have a nice Day!"
   }
 
   function makeUserReview(review){
+    const reviewDiv = document.querySelector('#review-div')
+    const reviewP = document.querySelector('#user-review')
+    reviewP.innerText = review.comment
+    const update = document.createElement('button')
+    update.type ="buttom"
+    update.class = "update"
+    update.dataset.id = review.id
+    update.innerText = "Update Review"
+    const deleteReview = document.createElement('button')
+    deleteReview.type ="buttom"
+    deleteReview.class = "delete"
+    deleteReview.dataset.id = review.id
+    deleteReview.innerText = "Delete Review"
+    reviewDiv.append(update, deleteReview)
+    updateListener()
+
     const reviewId = parseInt(review.id)
-    console.log(review)
     userReviewPost(reviewId, userId)
   }
 
+  function updateListener(){
+    const reviewDiv = document.querySelector('#review-div')
+    reviewDiv.addEventListener('click', reviewClick)
+  }
+
+  function reviewClick(e){
+      
+    const reviewId = parseInt(e.target.dataset.id)
+    console.log(reviewId)
+    const updateForm = document.querySelector('#update-review')
+    if (e.target.class === "update"){
+        updateForm.dataset.id = reviewId
+        let updateReview = document.createElement('input')
+        updateReview.type = "text"
+        updateReview.value = ""
+        let updateReviewSubmit = document.createElement('input')
+        updateReviewSubmit.setAttribute("type", "submit")
+        updateForm.append(updateReview, updateReviewSubmit)
+        UpdateSubmitListener()
+    }
+    else if (e.target.class === "delete"){
+        deleteReview(reviewId)
+    }
+  }
+
+  function UpdateSubmitListener(){
+    const updateForm = document.querySelector('#update-review')
+    updateForm.addEventListener('submit', UpdateSubmit)
+  }
+  
+  function UpdateSubmit(e){
+      e.preventDefault()
+      console.log(e)
+      const reviewId = parseInt(e.target.dataset.id)
+      const reviewComment = e.target[0].value
+      updateReview(reviewId, reviewComment)
+
+  }
+
   function parseReviews(reviews){
-    reviews.forEach(displayReviews)
+        reviews.forEach(displayReviews)
   }
 
 function displayReviews(review){
-  console.log(review)
+    const reviewUl = document.querySelector('#past-reviews')
+    const reviewLi = document.createElement('li')
+    reviewLi.innerText = review.comment
+    reviewUl.append(reviewLi)
 }
   // function handleExperience(e){
   //   console.log(e)

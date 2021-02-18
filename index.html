@@ -12,11 +12,11 @@
      
     <div id="main">
     <div class="header">
-        <h1>E-Scape</h1>
+        <img id = "logo" src = "escape-logo.png" alt= "E-scape" />
         <div id="button-container">
             <button class="popup" id="aboutBtn">About
                 <span class="popuptext" id="aboutPopUp">
-                    A Simple Popup!
+                    No you have not actually come to a video game store. Instead you have landed yourself in a virtual Escape room! Find all 7 clues and add them to your cart. Once you do enter the right "Promo Code" to solve the puzzle and win the game. To find the clues you will need to put your mouse to work clicking and scratching. Some clues will be put in your cart by a click of the mouse and some you will have to type in the correct word. Good Luck!!!!!
                     <form id="aboutForm">
                         <input id="name" type="text" placeholder="Enter name...">
                         <input type="submit" value="Get Started">
@@ -40,7 +40,7 @@
 
         </form>   
       </div>
-      <div id ="form"></div>
+      <div id ="form" ></div>
 
      
 
@@ -67,18 +67,22 @@
             <p><button>Add to Cart</button></p>
           </div>    
     </div>
-
-
-    <!-- <div id="constraint" class="yellow peel">
-        <div class="peel-top">Top</div>
-        <div class="peel-back">Back</div>
-        <div class="peel-bottom">Bottom</div>
-      </div> -->
+    <div class="column">
+        <div class="card" >
+            <div class= "image-container" 
+            ><img src="https://i.pinimg.com/originals/04/59/de/0459de4fad2483514d594bf83ffb5af4.jpg" alt="Dancing With the Stars" style="width:100%" >
+            </div>
+            <h1>Nintendo Switch Black Wireless Pro Controller</h1>
+            <p class="price">$54.99</p>
+            <p>Because the controller the switch comes with is way to small!</p>
+            <p><button>Add to Cart</button></p>
+          </div>    
+    </div>
         <div class="column">
             
             <div class="card" id="crossword">
                 
-                <div id="fill" class= "image-container"><img class="merv" src="https://i5.walmartimages.com/asr/3e935db1-dc1b-4cde-a4e9-a07498111493_1.f4122d0a8e8d0db82087244ee68df27c.jpeg" alt="Merv Griffin Crosswords" style="width:100%"></div>
+                <div id="fill" class= "image-container"><img class="merv" src="https://i5.walmartimages.com/asr/3e935db1-dc1b-4cde-a4e9-a07498111493_1.f4122d0a8e8d0db82087244ee68df27c.jpeg" alt="Merv Griffin Crosswords" style="height:75%"></div>
                 
                 <h1>Merv Griffin Crosswords</h1>
                 <p class="price">$14.99</p>
@@ -113,17 +117,17 @@
         </div>
         <div class="column">
             <div class="card" id="dance">
-                <div class= "image-container" id="with" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="https://images-na.ssl-images-amazon.com/images/I/51VXeLW4kxL._SY445_.jpg" alt="Dancing With the Stars" style="height:100%" class="dancing"></div>
+                <div class= "image-container" id="with" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="https://images-na.ssl-images-amazon.com/images/I/51VXeLW4kxL._SY445_.jpg" alt="Dancing With the Stars" style="height:75%" class="dancing"></div>
                 <h1>dancing <strong>WITH</strong> the Stars</h1>
                 <p class="price">$24.99</p>
-                <p></p>
+                <p>Shake your thing with your Favoite Stars!</p>
                 <p><button>Add to Cart</button></p>
               </div>    
         </div>
         <div class="flip-card">
             <div class="flip-card-inner column">
                     <div class="flip-card-front card">
-                        <div id="the-thing" class= "image-container"><img class= "thing-img" src="https://images-na.ssl-images-amazon.com/images/I/51KWJ1CAGDL.jpg" alt="The Thing" style="height:100%"></div>
+                        <div id="the-thing" class= "image-container"><img class= "thing-img" src="https://images-na.ssl-images-amazon.com/images/I/51KWJ1CAGDL.jpg" alt="The Thing" style="height:75%"></div>
                         <h1>The Thing</h1>
                         <p class="price">$27.99</p>
                         <p>Some <span id="things-clue">things</span> should just be left alone. Have fun with this survival-horror game. The movie is better!</p>
@@ -154,6 +158,14 @@
               <input type = "text" value = "">
               <input type = "submit" value = "submit">
           </form>
+          <div id ="review-div">
+              <form id = "update-review"></form>
+          <p id= "user-review"> </p>
+        </div>
+          <ul id= "past-reviews">
+
+          </ul>
+        
         </div>
 
 <script src="peel.js"></script>

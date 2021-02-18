@@ -5,28 +5,37 @@
     display: flex; 
     width: 100%;
     padding-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
     
     
 }
-#form{
-  border: solid 1px black;
+ .fill-form{
+  visibility: visible;
+  border: solid 1px rgb(113, 106, 106);
+  background-color: rgb(147, 207, 245);
+  width: 50%;
+  float: center;
+  text-align: center;
   padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-div.header h1{
-    color: white; 
+div.header #logo{
+
     display: inline;
 }
 
  div.header #button-container{
     position: absolute; 
     right: 5px; 
-    margin-top: 4%;
+    margin-top: 9%;
 }
 
 div.header button{
     background-color: black; 
+    font-size:x-large;
     color: white; 
     border: none; 
     
@@ -81,7 +90,7 @@ div.header .welcome{
   }
 
   div.image-container{
-    height: 19rem; 
+    height: 17rem; 
     width: auto; 
     object-fit: cover;
   }
@@ -265,7 +274,7 @@ ul#clue-list li p{
 /* The actual popup */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  width: 375px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -274,8 +283,8 @@ ul#clue-list li p{
   position: absolute;
   z-index: 1;
   top: 125%;
-  left: 50%;
-  margin-left: -80px;
+  right: 0;
+  margin-right: 0px;
 }
 
 /* Popup arrow */
@@ -283,7 +292,7 @@ ul#clue-list li p{
   content: "";
   position: absolute;
   bottom: 100%;
-  left: 50%;
+  right: 20%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -379,8 +388,8 @@ ul#clue-list li p{
 } */
 .flip-card {
   /* background-color: transparent; */
-  width: 19rem;
-  height: 35rem;
+  width: 17rem;
+  height: 33rem;
   perspective: 1000px;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   box-sizing: border-box; 
@@ -441,6 +450,9 @@ ul#clue-list li p{
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  float: center;
+  text-align: center;
+  font-family:"Abril Fatface", sans-serif;
 }
 
 /* The Close Button */
@@ -456,3 +468,19 @@ ul#clue-list li p{
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+  ul#past-reviews{
+
+    list-style-type: none;
+  }
+
+  ul#past-reviews li{
+    border: solid .1rem black;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1rem;
+    width: 40rem;
+    text-align: center;
+    font-family:"Abril Fatface", sans-serif;
+  }
