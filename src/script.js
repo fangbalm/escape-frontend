@@ -9,7 +9,6 @@ const aboutForm = document.querySelector('#aboutForm')
 const popup = document.getElementById("aboutPopUp");
 const btnContainer = document.querySelector('#button-container')
 let welcomeSpan = document.querySelector(".welcome")
-const experienceSpan = document.querySelector('.gradient-text')
 const clueList = document.querySelector('#clue-list')
 const ps5Button = document.querySelector('#ps5-button')
 const lionDiv = document.querySelector('#lionking')
@@ -137,7 +136,6 @@ function deleteReview(reviewId){
 cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
-experienceSpan.addEventListener('click', experiencesClue)
 reviewForm.addEventListener('submit', handleReviewForm)
 
 // notButton.addEventListener('click', notClue)
@@ -231,7 +229,10 @@ function displayAllClues(clues){
         }
         else if (clue.id == 5){
           // console.log(clue.id)
-          experienceSpan.dataset.id = clue.id
+          const expSpan = document.querySelector('#experiences-span')
+          expSpan.className = "gradient-text"
+          expSpan.addEventListener('click', experiencesClue)
+          expSpan.dataset.id = clue.id
           // experiencesClue(clue)
             
         }
@@ -309,7 +310,7 @@ const modal = document.getElementById("myModal");
 function winnerFormEvent(e){
    e.preventDefault()
    const answer = e.target[0].value.toLowerCase()
-   if (answer == "fill your life with exsperiences not things"){
+   if (answer == "fill your life with experiences not things"){
         modal.style.display = "block";
    }
    else {
@@ -353,8 +354,7 @@ function handleFillClue(e){
     alert("_______ in the Blank")
     let mervImg = document.querySelector('.merv')
     mervImg.id = "hidden-merv"
-    
-    
+    window.scroll(0,0)
     // console.log(clueForm.dataset.id)
 
     if(formDiv.innerHTML == ""){
@@ -371,6 +371,7 @@ function handleFillClue(e){
       formDiv.append(clueForm)
       fillForm()
   }
+  
    
 }
 
@@ -614,6 +615,7 @@ function handleUserSubmit(e){
   e.target.reset()
   popup.classList.remove("show");
   aboutBtn.classList.add("hide");
+  openNav(e)
 }
 
 function handleAboutBtn(e){

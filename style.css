@@ -324,6 +324,7 @@ ul#clue-list li p{
 .wrap{width:100%;}
 .gradient-text{
   font-family:"Abril Fatface", sans-serif;
+  font-size: x-large; 
   background: linear-gradient(to right, crimson,pink,springgreen);
   background-size: 200% 200%;
   animation: rainbow 2s ease-in-out infinite;
@@ -483,4 +484,8 @@ ul#clue-list li p{
     width: 40rem;
     text-align: center;
     font-family:"Abril Fatface", sans-serif;
+  }
+
+  #notSpan{
+    color: red;
   }
