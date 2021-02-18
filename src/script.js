@@ -19,6 +19,7 @@ const crosswordBtn = document.querySelector('#crossword-btn')
 const fillDiv =document.querySelector('#fill')
 const formDiv = document.querySelector('#form')
 const withDiv = document.querySelector('#with')
+const reviewForm = document.querySelector(".review-form")
 
 // let notButton = document.querySelector('.notButton')
 
@@ -70,6 +71,40 @@ function postCart(clueId, userId){
     .then(parseClues)
   }
 
+  function postReview(review){
+    fetch("http://localhost:3000/reviews", {
+        method: "POST", 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({comment: review})
+      })
+      .then(response => response.json())
+        .then(makeUserReview)
+      }
+
+    function userReviewPost(reviewId, userId){
+        fetch("http://localhost:3000/userReviews", {
+        method: "POST", 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user_id: userId, review_id: reviewId})
+      })
+      .then(response => response.json())
+        .then(getReviews)
+      }
+
+      function fetchAllReviews(){
+        fetch("http://localhost:3000/reviews")
+        .then(res => res.json())
+        .then(parseReviews)
+      }
+    
+  
+function getReviews(){
+    fetchAllReviews()
+}
 
   // Make fetch(localhost:300/users/id)
   // .then(res => res.json())
@@ -84,7 +119,7 @@ cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
 experienceSpan.addEventListener('click', experiencesClue)
-
+reviewForm.addEventListener('submit', handleReviewForm)
 
 // notButton.addEventListener('click', notClue)
 
@@ -187,7 +222,18 @@ function displayAllClues(clues){
             notClue(clue)
         }
         else if (clue.id == 7){
-            thingsClue(clue)
+            const thingImg = document.querySelector('.things')
+            thingImg.src = clue.image
+            thingImg.alt = "things"
+            const thingform = document.querySelector('.things-form')
+            thingform.dataset.id = clue.id
+            let thingsInput = document.createElement('input')
+            thingsInput.type = "text"
+            thingsInput.value = ""
+            let thingsSubmit = document.createElement('input')
+            thingsSubmit.setAttribute("type", "submit")
+            thingform.append(thingsInput,thingsSubmit)
+            thingsClue()
         }
     })
 }
@@ -210,15 +256,67 @@ function parseClues(userData){
 }
 
 function addToCart(clue){
-   
-  const clueLi = document.createElement('li')
-  const clueImgTag = document.createElement('img')
-  const cluePTag = document.createElement('p')
-  cluePTag.innerText = `${clue.id}. ${clue.word}`
-  clueImgTag.src = clue.image
-  clueLi.append(cluePTag, clueImgTag)
-  clueList.append(clueLi)
+        const clueLi = document.createElement('li')
+        const clueImgTag = document.createElement('img')
+        const cluePTag = document.createElement('p')
+        cluePTag.innerText = `${clue.id}. ${clue.word}`
+        clueImgTag.src = clue.image
+        clueLi.append(cluePTag, clueImgTag)
+        clueList.append(clueLi)
+    checkForWinner()
 }
+
+function checkForWinner(){
+    if (clueList.getElementsByTagName('li').length == 7){
+        cartComplete()
+   }
+}
+
+function cartComplete(){
+    const winnerForm = document.querySelector(".cart-complete")
+    winnerForm.id ="myBtn"
+    let winnerInput = document.createElement('input')
+      winnerInput.type = "text"
+      winnerInput.value = ""
+
+      let winnersubmit = document.createElement('input')
+      winnersubmit.setAttribute("type", "submit")
+      winnerForm.append(winnerInput, winnersubmit)
+      winnerForm.addEventListener('submit', winnerFormEvent)
+      
+}
+
+
+const modal = document.getElementById("myModal");
+function winnerFormEvent(e){
+   e.preventDefault()
+   console.log(e)
+   const answer = e.target[0].value.toLowerCase()
+   console.log(answer)
+   if (answer == "fill your life with exsperiances not things"){
+        modal.style.display = "block";
+   }
+   else {
+       alert("Try Again")
+   }
+}
+
+// Get the button that opens the modal
+const btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
 function fillClue(clue){
     const fillImg = document.createElement('img')
@@ -473,8 +571,20 @@ function handleNotSpan(e){
   postCart(clueId, userId) 
 }
 
-function thingsClue(clue){
+function thingsClue(){
+    const thingform = document.querySelector('.things-form')
+    thingform.addEventListener('submit', handleThingSubmit)
 
+}
+function handleThingSubmit(e){
+    e.preventDefault()
+    const clueId = e.target.dataset.id
+    if(e.target[0].value == "things" || "Things"){ 
+        postCart(clueId, userId)
+        e.target.remove()
+      } else {
+        alert("Wrong word!")
+      }
 }
 
 
@@ -526,6 +636,27 @@ function openNav(e) {
     postCart(clueId, userId)
   }
 
+  function handleReviewForm(e){
+      e.preventDefault()
+      const review = e.target[0].value
+      console.log(review)
+      postReview(review)
+       
+  }
+
+  function makeUserReview(review){
+    const reviewId = parseInt(review.id)
+    console.log(review)
+    userReviewPost(reviewId, userId)
+  }
+
+  function parseReviews(reviews){
+    reviews.forEach(displayReviews)
+  }
+
+function displayReviews(review){
+  console.log(review)
+}
   // function handleExperience(e){
   //   console.log(e)
     

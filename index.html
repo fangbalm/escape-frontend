@@ -9,6 +9,7 @@
     <title>E-Scape</title>
 </head>
 <body>
+     
     <div id="main">
     <div class="header">
         <h1>E-Scape</h1>
@@ -35,11 +36,13 @@
         <ul id="clue-list">
 
         </ul> 
-        <form>
+        <form class= "cart-complete">
 
         </form>   
       </div>
       <div id ="form"></div>
+
+     
 
    <section id="items">
     <div class="column" >
@@ -85,15 +88,9 @@
              
         </div>
 
-        <div class="column">
-            <div class="card" >
-                <div id="the-thing" class= "image-container"><img class= "thing-img" src="https://images-na.ssl-images-amazon.com/images/I/51KWJ1CAGDL.jpg" alt="The Thing" style="height:100%"></div>
-                <h1>The Thing</h1>
-                <p class="price">$27.99</p>
-                <p>Some <span id="things-clue">things</span> should just be left alone. Have fun with this survival-horror game. The movie is better!</p>
-                <p><button>Add to Cart</button></p>
-              </div>
-        </div>
+        
+
+    
       
         <div class="column">
             <div class="card">
@@ -123,11 +120,41 @@
                 <p><button>Add to Cart</button></p>
               </div>    
         </div>
-
+        <div class="flip-card">
+            <div class="flip-card-inner column">
+                    <div class="flip-card-front card">
+                        <div id="the-thing" class= "image-container"><img class= "thing-img" src="https://images-na.ssl-images-amazon.com/images/I/51KWJ1CAGDL.jpg" alt="The Thing" style="height:100%"></div>
+                        <h1>The Thing</h1>
+                        <p class="price">$27.99</p>
+                        <p>Some <span id="things-clue">things</span> should just be left alone. Have fun with this survival-horror game. The movie is better!</p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>So Many</h1> 
+                        <img class="things" src= "" alt="" width ="100%">
+                        <form class ="things-form"></form> 
+                        
+                    </div>
+            </div>
+        </div>
 
    </section>
+
 </div>
-   
+   <!-- Modal -->
+     <div id="myModal" class="modal">
+
+    
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>Congratulations!!!!!</h1>
+          <p>you won!</p>
+          <p>Please leave a Review</p>
+          <form class = "review-form">
+              <input type = "text" value = "">
+              <input type = "submit" value = "submit">
+          </form>
+        </div>
 
 <script src="peel.js"></script>
 <script src="src/script.js"></script>
