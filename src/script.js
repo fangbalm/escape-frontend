@@ -293,14 +293,18 @@ function checkForWinner(){
 }
 
 function cartComplete(){
+    const cartForm = document.querySelector("#cart-form")
     const winnerForm = document.querySelector(".cart-complete")
     winnerForm.id ="myBtn"
+    const promoMes = document.createElement('p')
+    promoMes.innerText = "Enter PROMO code"
     let winnerInput = document.createElement('input')
       winnerInput.type = "text"
       winnerInput.value = ""
       let winnersubmit = document.createElement('input')
       winnersubmit.setAttribute("type", "submit")
       winnerForm.append(winnerInput, winnersubmit)
+      cartForm.prepend(promoMes)
       winnerForm.addEventListener('submit', winnerFormEvent)
       
 }
@@ -626,8 +630,8 @@ function handleAboutBtn(e){
 
 function openNav(e) {
     
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginRight = "250px";
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("main").style.marginRight = "300px";
   }
 
   function closeNav() {
