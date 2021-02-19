@@ -33,12 +33,16 @@
     
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h1>Cart</h1>
+        <h4>Find 7 clues</h4>
         <ul id="clue-list">
 
         </ul> 
+        <div id ="cart-form" >
         <form class= "cart-complete">
-
-        </form>   
+            
+        </form> 
+        </div>  
       </div>
       <div id ="form" ></div>
 
@@ -94,7 +98,7 @@
       
         <div class="column">
             <div class="card">
-                <div class= "image-container" id="switch"> <canvas class="canvas" id="js-canvas hidden-canvas" width="350" height="250"></canvas><img id= "switch-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%"></div>
+                <div class= "image-container" id="switch"> <canvas class="canvas" id="js-canvas hidden-canvas" width="300" height="200"></canvas><img id= "switch-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%"></div>
                 <h1>Nintendo Switch Animal Crossing Edition</h1>
                 <p class="price">$299.99</p>
                 <p>Your're going to love playing animal crossing with <span id= "your-clue">your</span> friends!</p>
@@ -160,9 +164,9 @@
     
         <div class="modal-content">
           <span class="close">&times;</span>
-          <h1>Congratulations!!!!!</h1>
-          <p>you won!</p>
-          <p>Please leave a Review</p>
+          <h1 class= "win">Congratulations!!!!!</h1>
+          <p class="win">YOU WON!</p>
+          <p class = "win">Please leave a Review</p>
           <form class = "review-form">
               <input type = "text" value = "">
               <input type = "submit" value = "submit">
