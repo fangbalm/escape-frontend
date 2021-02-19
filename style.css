@@ -483,6 +483,10 @@ ul#clue-list li p{
   font-family:"Abril Fatface", sans-serif;
 }
 
+.modal-content .win{
+  margin: 5px;
+}
+
 /* The Close Button */
 .close {
   color: #aaaaaa;
