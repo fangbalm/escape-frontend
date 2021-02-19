@@ -20,6 +20,8 @@ const formDiv = document.querySelector('#form')
 const withDiv = document.querySelector('#with')
 const reviewForm = document.querySelector(".review-form")
 const lifeFormDiv = document.querySelector('#life-form')
+const fortniteBtn = document.querySelector("#fortnite-btn")
+
 
 // let notButton = document.querySelector('.notButton')
 
@@ -138,6 +140,7 @@ cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
 reviewForm.addEventListener('submit', handleReviewForm)
+fortniteBtn.addEventListener('click', changeBtnColor)
 
 // notButton.addEventListener('click', notClue)
 
@@ -779,6 +782,14 @@ function displayReviews(review){
     reviewLi.innerText = review.comment
     reviewUl.append(reviewLi)
 }
+
+function changeBtnColor(e){
+  fortniteBtn.style.backgroundColor = randomColors();
+}
+
+ function randomColors() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  } 
   // function handleExperience(e){
   //   console.log(e)
     
