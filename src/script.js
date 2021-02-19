@@ -197,7 +197,7 @@ function displayAllClues(clues){
             yourImg.setAttribute("class", "your-img")
             yourImg.style = "visibility: hidden"
             const clueP = document.createElement('p')
-            clueP.innerText ="It belongs to you. click the correct word into the description"
+            clueP.innerText ="It belongs to you. click the correct word in the description"
             switchDiv.append(yourImg, clueP)
             yourClue()
             yourSpan.addEventListener('click', handleYourClick)
