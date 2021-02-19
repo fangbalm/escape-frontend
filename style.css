@@ -14,7 +14,7 @@
   visibility: visible;
   border: solid 1px rgb(113, 106, 106);
   background-color: rgb(147, 207, 245);
-  width: 50%;
+  width: 60%;
   float: center;
   text-align: center;
   padding: 10px;
@@ -205,7 +205,7 @@ div.header .welcome{
   right: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 20px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -233,19 +233,43 @@ div.header .welcome{
   margin-left: 50px;
 }
 
+.sidenav h1{
+  color: white;
+  text-align: center;
+}
+
+.sidenav h4{
+  color: white;
+  text-align: center;
+  margin: 0;
+
+}
+
 ul#clue-list li{
   border-bottom: solid .3px rgb(123, 123, 123);
-  padding: 20px; 
+  padding: 10px; 
+  
 }
 
  ul#clue-list li img{
-  width: 65px;
+  max-width: 65px;
+  max-height: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
   float: right; 
+  display: inline;
 }
 
 ul#clue-list li p{
   color: white; 
-  display: inline;
+  display: inline-block;
+}
+
+#cart-form{
+  Color: white;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -275,7 +299,7 @@ ul#clue-list li p{
 .popup .popuptext {
   visibility: hidden;
   width: 375px;
-  background-color: #555;
+  background-color: rgb(61, 60, 60);
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -446,7 +470,10 @@ ul#clue-list li p{
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-image: url("https://www.richmond-dailynews.com/sites/richmond-dailynews.etypegoogle7.com/files/fireworks-slideshow_1.jpg");
+  color: #fff;
+  text-shadow: 1px 1px black, 0 3px black, 3px 0 black, 0 -1px black;
+  font-size: xx-large;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -454,6 +481,10 @@ ul#clue-list li p{
   float: center;
   text-align: center;
   font-family:"Abril Fatface", sans-serif;
+}
+
+.modal-content .win{
+  margin: 5px;
 }
 
 /* The Close Button */
@@ -480,6 +511,11 @@ ul#clue-list li p{
     border: solid .1rem black;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 1rem;
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    font-size: medium;
     padding: 1rem;
     width: 40rem;
     text-align: center;

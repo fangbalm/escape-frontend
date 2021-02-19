@@ -19,6 +19,9 @@ const fillDiv =document.querySelector('#fill')
 const formDiv = document.querySelector('#form')
 const withDiv = document.querySelector('#with')
 const reviewForm = document.querySelector(".review-form")
+const lifeFormDiv = document.querySelector('#life-form')
+const fortniteBtn = document.querySelector("#fortnite-btn")
+
 
 // let notButton = document.querySelector('.notButton')
 
@@ -137,6 +140,7 @@ cartBtn.addEventListener('click', openNav)
 aboutBtn.addEventListener('click', handleAboutBtn)
 aboutForm.addEventListener('submit', handleUserSubmit)
 reviewForm.addEventListener('submit', handleReviewForm)
+fortniteBtn.addEventListener('click', changeBtnColor)
 
 // notButton.addEventListener('click', notClue)
 
@@ -193,7 +197,7 @@ function displayAllClues(clues){
             yourImg.setAttribute("class", "your-img")
             yourImg.style = "visibility: hidden"
             const clueP = document.createElement('p')
-            clueP.innerText ="It belongs to you. click the correct word int the description"
+            clueP.innerText ="It belongs to you. click the correct word into the description"
             switchDiv.append(yourImg, clueP)
             yourClue()
             yourSpan.addEventListener('click', handleYourClick)
@@ -293,14 +297,18 @@ function checkForWinner(){
 }
 
 function cartComplete(){
+    const cartForm = document.querySelector("#cart-form")
     const winnerForm = document.querySelector(".cart-complete")
     winnerForm.id ="myBtn"
+    const promoMes = document.createElement('p')
+    promoMes.innerText = "Enter PROMO code"
     let winnerInput = document.createElement('input')
       winnerInput.type = "text"
       winnerInput.value = ""
       let winnersubmit = document.createElement('input')
       winnersubmit.setAttribute("type", "submit")
       winnerForm.append(winnerInput, winnersubmit)
+      cartForm.prepend(promoMes)
       winnerForm.addEventListener('submit', winnerFormEvent)
       
 }
@@ -385,7 +393,9 @@ function handleFillSubmit(e){
   e.preventDefault()
   const clueId = parseInt(e.target.dataset.id)
   const clueForm = document.querySelector('#form')
-  if(e.target[0].value == "fill" || "Fill"){ 
+  const answer = e.target[0].value.toLowerCase()
+  if(answer === "fill"){ 
+      
     postCart(clueId, userId)
     clueForm.remove()
   } else {
@@ -536,11 +546,50 @@ function lifeClueOut(e){
 
 function lifeClueClick(){
     const lifeImgClick = document.querySelector(".life-img")
+    
+  function handleLifeForm(){
+      const clueForm = document.querySelector('#life-form')
+      clueForm.addEventListener("submit", handleLifeSubmit)
+      
+  
+  }
 
     lifeImgClick.addEventListener('click', function(e) {
-        const clueId = e.target.dataset.id
-        postCart(clueId, userId)
+      alert("Enter the word that corresponds with the image")
+      if(lifeFormDiv.innerHTML == ""){
+        const clueForm = document.createElement('form')
+        clueForm.className = "fill-form"
+        clueForm.dataset.id = parseInt(e.target.dataset.id)
+        let fillInput = document.createElement('input')
+        fillInput.type = "text"
+        fillInput.value = ""
+        fillInput.name = "word"
+        let fillsubmit = document.createElement('input')
+        fillsubmit.setAttribute("type", "submit")
+        clueForm.append(fillInput, fillsubmit)
+        lifeFormDiv.append(clueForm)
+        
+        handleLifeForm()
+    }
+        // const clueId = e.target.dataset.id
+        // postCart(clueId, userId)
     })
+}
+
+
+function handleLifeSubmit(e){
+  e.preventDefault()
+  const clueId = parseInt(e.target.dataset.id)
+  const clueForm = document.querySelector('#life-form')
+  const answer = e.target[0].value.toLowerCase()
+  if(answer === "life"){ 
+      console.log(e.target[0].value)
+    postCart(clueId, userId)
+    clueForm.remove()
+  } else {
+    alert("Wrong word!")
+  }
+  
 }
 
 function withClue(){
@@ -626,8 +675,8 @@ function handleAboutBtn(e){
 
 function openNav(e) {
     
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginRight = "250px";
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("main").style.marginRight = "300px";
   }
 
   function closeNav() {
@@ -743,6 +792,14 @@ function displayReviews(review){
     reviewLi.innerText = review.comment
     reviewUl.append(reviewLi)
 }
+
+function changeBtnColor(e){
+  fortniteBtn.style.backgroundColor = randomColors();
+}
+
+ function randomColors() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  } 
   // function handleExperience(e){
   //   console.log(e)
     

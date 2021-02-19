@@ -33,12 +33,16 @@
     
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h1>Cart</h1>
+        <h4>Find 7 clues</h4>
         <ul id="clue-list">
 
         </ul> 
+        <div id ="cart-form" >
         <form class= "cart-complete">
-
-        </form>   
+            
+        </form> 
+        </div>  
       </div>
       <div id ="form" ></div>
 
@@ -91,14 +95,10 @@
               </div>
              
         </div>
-
-        
-
-    
       
         <div class="column">
             <div class="card">
-                <div class= "image-container" id="switch"> <canvas class="canvas" id="js-canvas hidden-canvas" width="350" height="250"></canvas><img id= "switch-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%"></div>
+                <div class= "image-container" id="switch"> <canvas class="canvas" id="js-canvas hidden-canvas" width="300" height="200"></canvas><img id= "switch-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6401/6401728_sd.jpg" alt="Nintendo Switch" style="width:100%"></div>
                 <h1>Nintendo Switch Animal Crossing Edition</h1>
                 <p class="price">$299.99</p>
                 <p>Your're going to love playing animal crossing with <span id= "your-clue">your</span> friends!</p>
@@ -108,19 +108,33 @@
       
         <div class="column">
             <div class="card" >
-                <div id="lionking" class= "image-container"><img class= "fake-life-img" src="https://target.scene7.com/is/image/Target/GUEST_2ac1eb31-d7cf-467b-ae90-f7ce62843a32?wid=488&hei=488&fmt=pjpeg" alt="Nintendo Switch" style="width:100%"></div>
-                <h1>Disney Classic Games: Aladdin and The Lion King</h1>
+                <div id="lionking" class= "image-container"><img class= "fake-life-img" src="https://target.scene7.com/is/image/Target/GUEST_2ac1eb31-d7cf-467b-ae90-f7ce62843a32?wid=488&hei=488&fmt=pjpeg" alt="Nintendo Switch" style="width:100%">
+                    
+                </div>
+                <div id ="life-form"></div>
+                <h1 id ="life-remove">Disney Classic Games: Aladdin and The Lion King</h1>
                 <p class="price">$27.99</p>
                 <p>Experience the circle of life with this classic game!</p>
                 <p><button>Add to Cart</button></p>
               </div>
         </div>
+
+        <div class="column">
+            <div class="card" >
+                <div id="fortnite" class= "image-container"><img src="https://i.gyazo.com/25bb319d48bd89a3be237ff6b4505c51.png" alt="Fortnite" style="width:100%"></div>
+                <h1>Fortnite - PS4</h1>
+                <p class="price">$19.99</p>
+                <p>The game of champions.</p>
+                <p><button id="fortnite-btn">Add to Cart</button></p>
+              </div>
+        </div>
+
         <div class="column">
             <div class="card" id="dance">
                 <div class= "image-container" id="with" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="https://images-na.ssl-images-amazon.com/images/I/51VXeLW4kxL._SY445_.jpg" alt="Dancing With the Stars" style="height:75%" class="dancing"></div>
                 <h1>Dancing <strong>WITH</strong> the Stars</h1>
                 <p class="price">$24.99</p>
-                <p>Shake your thing with your Favoite Stars!</p>
+                <p>Shake your thing with your Favorite Stars!</p>
                 <p><button>Add to Cart</button></p>
               </div>    
         </div>
@@ -151,9 +165,9 @@
     
         <div class="modal-content">
           <span class="close">&times;</span>
-          <h1>Congratulations!!!!!</h1>
-          <p>you won!</p>
-          <p>Please leave a Review</p>
+          <h1 class= "win">Congratulations!!!!!</h1>
+          <p class="win">YOU WON!</p>
+          <p class = "win">Please leave a Review</p>
           <form class = "review-form">
               <input type = "text" value = "">
               <input type = "submit" value = "submit">
