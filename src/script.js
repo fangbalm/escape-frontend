@@ -197,7 +197,7 @@ function displayAllClues(clues){
             yourImg.setAttribute("class", "your-img")
             yourImg.style = "visibility: hidden"
             const clueP = document.createElement('p')
-            clueP.innerText ="It belongs to you. click the correct word int the description"
+            clueP.innerText ="It belongs to you. click the correct word into the description"
             switchDiv.append(yourImg, clueP)
             yourClue()
             yourSpan.addEventListener('click', handleYourClick)
@@ -393,7 +393,9 @@ function handleFillSubmit(e){
   e.preventDefault()
   const clueId = parseInt(e.target.dataset.id)
   const clueForm = document.querySelector('#form')
-  if(e.target[0].value == "fill" || "Fill"){ 
+  const answer = e.target[0].value.toLowerCase()
+  if(answer === "fill"){ 
+      
     postCart(clueId, userId)
     clueForm.remove()
   } else {
@@ -548,6 +550,7 @@ function lifeClueClick(){
   function handleLifeForm(){
       const clueForm = document.querySelector('#life-form')
       clueForm.addEventListener("submit", handleLifeSubmit)
+      
   
   }
 
@@ -565,6 +568,7 @@ function lifeClueClick(){
         fillsubmit.setAttribute("type", "submit")
         clueForm.append(fillInput, fillsubmit)
         lifeFormDiv.append(clueForm)
+        
         handleLifeForm()
     }
         // const clueId = e.target.dataset.id
@@ -577,7 +581,9 @@ function handleLifeSubmit(e){
   e.preventDefault()
   const clueId = parseInt(e.target.dataset.id)
   const clueForm = document.querySelector('#life-form')
-  if(e.target[0].value == "life" || "Life"){ 
+  const answer = e.target[0].value.toLowerCase()
+  if(answer === "life"){ 
+      console.log(e.target[0].value)
     postCart(clueId, userId)
     clueForm.remove()
   } else {
