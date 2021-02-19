@@ -19,6 +19,7 @@ const fillDiv =document.querySelector('#fill')
 const formDiv = document.querySelector('#form')
 const withDiv = document.querySelector('#with')
 const reviewForm = document.querySelector(".review-form")
+const lifeFormDiv = document.querySelector('#life-form')
 
 // let notButton = document.querySelector('.notButton')
 
@@ -536,11 +537,46 @@ function lifeClueOut(e){
 
 function lifeClueClick(){
     const lifeImgClick = document.querySelector(".life-img")
+    
+  function handleLifeForm(){
+      const clueForm = document.querySelector('#life-form')
+      clueForm.addEventListener("submit", handleLifeSubmit)
+  
+  }
 
     lifeImgClick.addEventListener('click', function(e) {
-        const clueId = e.target.dataset.id
-        postCart(clueId, userId)
+      alert("Enter the word that corresponds with the image")
+      if(lifeFormDiv.innerHTML == ""){
+        const clueForm = document.createElement('form')
+        clueForm.className = "fill-form"
+        clueForm.dataset.id = parseInt(e.target.dataset.id)
+        let fillInput = document.createElement('input')
+        fillInput.type = "text"
+        fillInput.value = ""
+        fillInput.name = "word"
+        let fillsubmit = document.createElement('input')
+        fillsubmit.setAttribute("type", "submit")
+        clueForm.append(fillInput, fillsubmit)
+        lifeFormDiv.append(clueForm)
+        handleLifeForm()
+    }
+        // const clueId = e.target.dataset.id
+        // postCart(clueId, userId)
     })
+}
+
+
+function handleLifeSubmit(e){
+  e.preventDefault()
+  const clueId = parseInt(e.target.dataset.id)
+  const clueForm = document.querySelector('#life-form')
+  if(e.target[0].value == "life" || "Life"){ 
+    postCart(clueId, userId)
+    clueForm.remove()
+  } else {
+    alert("Wrong word!")
+  }
+  
 }
 
 function withClue(){
