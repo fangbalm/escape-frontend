@@ -6,7 +6,7 @@ Frontend utilizes CSS, HTML5, and JavaScript.
 
 # Instructions to Start 
 ### Requirements  
- This application utilizes a Rails backend, which can be found here: https://github.com/jtray86/escape-backend 
+ This application utilizes a Rails backend, which can be found here: (https://github.com/jtray86/escape-backend/tree/Dev)
  - **Database:** Postgresql 
  
 Ruby gems required to run: 
